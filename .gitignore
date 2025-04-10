@@ -1,0 +1,8 @@
+# Ignore training data and scripts
+Fake.csv
+True.csv
+train_model.py
+
+# Python cache
+__pycache__/
+*.pyc

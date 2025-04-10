@@ -1,7 +1,11 @@
 from flask import Flask, request, jsonify
 import pickle
+from flask_cors import CORS
+
+import pandas as pd
 
 app = Flask(__name__)
+CORS(app)
 
 # Load model and vectorizer
 model = pickle.load(open('model.pkl', 'rb'))
@@ -18,7 +22,3 @@ def predict():
     vector = vectorizer.transform([text])
     prediction = model.predict(vector)[0]
     return jsonify({'prediction': prediction})
-
-# Only needed for local testing
-if __name__ == '__main__':
-    app.run(debug=True)
